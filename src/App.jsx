@@ -1,7 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useRef } from "react";
 
 function App() {
-  
+
+  return(
+    <div>
+    </div>
+  )
 }
 
 export default App;
@@ -211,5 +215,67 @@ function fetchMessages(room) {
 
 export default App;
 
+  const clickCounter = useRef(0);
+
+  function handleClick(){
+    clickCounter.current++;
+    console.log(clickCounter.current);
+    
+  }
+
+  return(
+    <div>
+      <button onClick={()=>{handleClick()}} type="submit">Click me</button>
+    </div>
+  )
+
+    const inputRef = useRef(null);
+
+  function onClick(){
+    inputRef.current.focus();
+  }
+
+  return(
+    <div>
+      <input type="text" ref={inputRef}/>
+      <button type="submit" onClick={()=>onClick()}>Click me</button>
+    </div>
+  )
+
+
+    const inputRef = useRef(null);
+
+  function onClick(){
+    console.log(inputRef.current);
+    
+    inputRef.current.style.backgroundColor = "yellow";
+    inputRef.current.focus();
+  }
+
+  return(
+    <div>
+      <input type="text" ref={inputRef}/>
+      <button type="submit" onClick={()=>onClick()}>Click me</button>
+    </div>
+  )
+}
+
+  const timerID = useRef(null);
+  
+  function startTimer(){
+    timerID.current = setInterval(()=>{console.log("Running...");
+    },1000)
+  }
+
+  function stopTimer(){
+    clearInterval(timerID.current);
+  }
+
+  return(
+    <div>
+      <button type="submit" onClick={()=>startTimer()}>Start timer</button>
+      <button type="submit" onClick={()=>stopTimer()}>Stop timer</button>
+    </div>
+  )
 
 */
